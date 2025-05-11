@@ -1,7 +1,13 @@
+using AspNetCoreRateLimit;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Presentation.AppProgrammingInt.ClientePersona.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var condiguration = builder.Configuration.GetSection(nameof(Appsettings));
+
+builder.Services.Configure<Appsettings>(condiguration);
 // Agregar servicios al contenedor.
 
 builder.Services.AddControllers();
@@ -23,7 +29,23 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("Appsettings:Configurations:Security:IpRateLimiting"));
+
+builder.Services.AddInMemoryRateLimiting();
+
+// Add URL mapping service
+// Add application service
+// Add exception handler
+builder.Services.AddExceptionHandler<GoblalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
+
 var app = builder.Build();
+var appsettings = app.Services.GetRequiredService<IOptionsMonitor<Appsettings>>();
+var allowOrigins = appsettings.CurrentValue.Configurations.Security.CorsAlows
+    .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
 
 // Configurar el pipeline HTTP.
 if (app.Environment.IsDevelopment())
@@ -42,6 +64,13 @@ app.Use(async (context, next) =>
 });
 
 app.UseHttpsRedirection();
+app.UseCors(options =>
+{
+    options.WithOrigins(allowOrigins);
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+    options.AllowCredentials();
+});
 app.UseAuthorization();
 app.MapControllers();
 
