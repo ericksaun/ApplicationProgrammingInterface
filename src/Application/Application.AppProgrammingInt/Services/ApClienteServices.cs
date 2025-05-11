@@ -9,16 +9,16 @@ using Domain.AppProgrammingInt.UnitOfWork;
 
 namespace Application.AppProgrammingInt.Services
 {
-    internal class ApClienteService : IApClienteService
+    public class ApClienteServices : IApClienteServices
     {
         private readonly IAppProgrammingIntUnitOfWork _unitOfWork;
-        public ApClienteService(IAppProgrammingIntUnitOfWork unitOfWork)
+        public ApClienteServices(IAppProgrammingIntUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
         public async Task<ApCliente> GetClienteByIdAsync(int id)
         {
-            return (await _unitOfWork.ApCliente.FindAsync(x=>x.ClIdCliente.Equals(id))).FirstOrDefault();
+            return (await _unitOfWork.ApCliente.FindAsync(x => x.ClIdCliente.Equals(id))).FirstOrDefault()!;
         }
         public async Task<IEnumerable<ApCliente>> GetAllClientesAsync()
         {

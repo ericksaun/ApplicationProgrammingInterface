@@ -45,7 +45,7 @@ builder.Services.AddProblemDetails();
 var app = builder.Build();
 var appsettings = app.Services.GetRequiredService<IOptionsMonitor<Appsettings>>();
 var allowOrigins = appsettings.CurrentValue.Configurations.Security.CorsAlows
-    .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+    .Split([ ',', ';' ], StringSplitOptions.RemoveEmptyEntries);
 
 // Configurar el pipeline HTTP.
 if (app.Environment.IsDevelopment())
