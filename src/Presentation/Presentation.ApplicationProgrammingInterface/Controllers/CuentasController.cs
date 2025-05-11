@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Presentation.AppProgrammingInt.ClientePersona.Controllers
+namespace Presentation.ApplicationProgrammingInterface.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,7 +1,7 @@
 using AspNetCoreRateLimit;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using Presentation.AppProgrammingInt.ClientePersona.Middleware;
+using Presentation.ApplicationProgrammingInterface.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
