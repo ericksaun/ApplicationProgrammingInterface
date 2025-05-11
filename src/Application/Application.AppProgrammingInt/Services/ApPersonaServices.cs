@@ -12,7 +12,7 @@ namespace Application.AppProgrammingInt.Services
     public class ApPersonasServices : IApPersonasServices
     {
 
-    }private readonly IAppProgrammingIntUnitOfWork _unitOfWork;
+        private readonly IAppProgrammingIntUnitOfWork _unitOfWork;
         public ApPersonasServices(IAppProgrammingIntUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -50,3 +50,4 @@ namespace Application.AppProgrammingInt.Services
         }
 
     }
+}
