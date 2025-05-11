@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ignorar bin y obj en todos los proyectos
+[Bb]in/
+[Oo]bj/
+*.dll
+*.exe
