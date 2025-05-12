@@ -9,13 +9,14 @@ using Domain.AppProgrammingInt.Repositories;
 using Infrastructure.AppProgrammingInt.DataBase.AppProgrammingInt.Repositories;
 using Domain.AppProgrammingInt.UnitOfWork;
 using Infrastructure.AppProgrammingInt.DataBase.AppProgrammingInt.UnitOfWork;
+using AspNetCoreRateLimit;
 
 namespace Infrastructure.AppProgrammingInt.IOC.Dependency
 {
     public static class ConfigurationIOC
     {
         public static IServiceCollection? Services { get; set; }
-        public static void AddInfrastructureServices(this IServiceCollection services)
+        public static void AddDependency(this IServiceCollection services)
         {
             Services = services;
 
@@ -37,6 +38,9 @@ namespace Infrastructure.AppProgrammingInt.IOC.Dependency
             #region UnitOfWork
             services.AddScoped<IAppProgrammingIntUnitOfWork, AppProgrammingIntUnitOfWork>();
             #endregion UnitOfWork
+            #region Security
+            services.AddTransient<IRateLimitConfiguration, RateLimitConfiguration>();
+            #endregion Security
 
         }
 

@@ -8,7 +8,7 @@ namespace Infrastructure.AppProgrammingInt.DataBase.Configuration
 {
     public static class ConfigureDataBase
     {
-        public static void AddConfigureDataBase(this ServiceCollection services)
+        public static void AddConfigureDataBase(this IServiceCollection services)
         {
 
             IOptionsMonitor<Appsettings> options = services.BuildServiceProvider().GetService<IOptionsMonitor<Appsettings>>()!;

@@ -1,4 +1,6 @@
 using AspNetCoreRateLimit;
+using Infrastructure.AppProgrammingInt.DataBase.Configuration;
+using Infrastructure.AppProgrammingInt.IOC.Dependency;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Presentation.ApplicationProgrammingInterface.Middleware;
@@ -9,6 +11,9 @@ var condiguration = builder.Configuration.GetSection(nameof(Appsettings));
 
 builder.Services.Configure<Appsettings>(condiguration);
 // Agregar servicios al contenedor.
+
+ConfigurationIOC.AddDependency(builder.Services);
+ConfigureDataBase.AddConfigureDataBase(builder.Services);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
