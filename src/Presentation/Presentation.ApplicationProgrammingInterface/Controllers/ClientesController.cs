@@ -2,9 +2,9 @@
 using Domain.AppProgrammingInt.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Presentation.ApplicationProgrammingInterface.Models;
+using Presentation.ApplicationProgrammingInterface.PersonaCliente.Models;
 
-namespace Presentation.ApplicationProgrammingInterface.Controllers
+namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -53,18 +53,38 @@ namespace Presentation.ApplicationProgrammingInterface.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPersona([FromBody] ApPersona persona)
+        public async Task<IActionResult> AddPersona([FromBody] VMApPersona vmpersona)
         {
-            if (persona == null)
+            if (vmpersona == null)
             {
                 _logger.LogWarning("Intento de agregar una persona nula.");
                 return BadRequest("La persona no puede ser nula.");
             }
 
             _logger.LogInformation("Iniciando la creación de una nueva persona.");
-            await _apPersonaservices.AddPersonaAsync(persona);
-            _logger.LogInformation("Persona con ID {Id} creada exitosamente.", persona.PsIdPersona);
-            return CreatedAtAction(nameof(GetPersonaById), new { id = persona.PsIdPersona }, persona);
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                };
+
+                var persona = JsonConvert.DeserializeObject<ApPersona>(JsonConvert.SerializeObject(vmpersona), settings);
+                if (persona == null)
+                {
+                    _logger.LogWarning("Error al deserializar la persona.");
+                    return BadRequest("Error al procesar los datos de la persona.");
+                }
+
+                await _apPersonaservices.AddPersonaAsync(persona);
+                _logger.LogInformation("Persona con ID {Id} creada exitosamente.", persona.PsIdPersona);
+                return CreatedAtAction(nameof(GetPersonaById), new { id = persona.PsIdPersona }, persona);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al crear una nueva persona.");
+                throw;
+            }
         }
 
         [HttpPut("{id}")]

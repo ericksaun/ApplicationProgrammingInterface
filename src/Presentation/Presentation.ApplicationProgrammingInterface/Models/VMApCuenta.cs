@@ -1,4 +1,4 @@
-﻿namespace Presentation.ApplicationProgrammingInterface.Models
+﻿namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Models
 {
     public class VMApCuenta
     {

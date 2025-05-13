@@ -9,6 +9,6 @@ namespace Domain.AppProgrammingInt.Repositories
 {
     public interface IApPersonaRepository : IGenericAppProgrammingIntRepository<ApPersona>
     {
-        
+        Task<IEnumerable<ApPersona>> GetAllPersonasAsync();
     }
 }

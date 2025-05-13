@@ -12,7 +12,7 @@ namespace Infrastructure.AppProgrammingInt.DataBase.AppProgrammingInt.Repositori
 {
     public class GenericAppProgrammingIntRepository<T> : IGenericAppProgrammingIntRepository<T> where T : class
     {
-        private readonly contextAppProgrammingInt _context;
+        protected readonly contextAppProgrammingInt _context;
         public GenericAppProgrammingIntRepository(contextAppProgrammingInt context)
         {
             _context = context;

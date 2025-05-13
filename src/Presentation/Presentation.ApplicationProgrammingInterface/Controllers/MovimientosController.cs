@@ -3,9 +3,9 @@ using Domain.AppProgrammingInt.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Presentation.ApplicationProgrammingInterface.Models;
+using Presentation.ApplicationProgrammingInterface.PersonaCliente.Models;
 
-namespace Presentation.ApplicationProgrammingInterface.Controllers
+namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

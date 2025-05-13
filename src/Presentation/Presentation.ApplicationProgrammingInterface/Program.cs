@@ -3,7 +3,8 @@ using Infrastructure.AppProgrammingInt.DataBase.Configuration;
 using Infrastructure.AppProgrammingInt.IOC.Dependency;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using Presentation.ApplicationProgrammingInterface.Middleware;
+using Azure.Identity;
+using Presentation.ApplicationProgrammingInterface.PersonaCliente.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +34,10 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+});
 
 builder.Services.AddMemoryCache();
 builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("Appsettings:Configurations:Security:IpRateLimiting"));
@@ -45,6 +49,10 @@ builder.Services.AddInMemoryRateLimiting();
 // Add exception handler
 builder.Services.AddExceptionHandler<GoblalExceptionHandler>();
 builder.Services.AddProblemDetails();
+builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions
+{
+    ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
+});
 
 
 var app = builder.Build();
@@ -66,6 +74,7 @@ app.Use(async (context, next) =>
         return;
     }
     await next();
+    
 });
 
 app.UseHttpsRedirection();

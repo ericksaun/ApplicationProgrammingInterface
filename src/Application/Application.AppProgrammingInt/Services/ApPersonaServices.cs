@@ -23,7 +23,7 @@ namespace Application.AppProgrammingInt.Services
         }
         public async Task<IEnumerable<ApPersona>> GetAllPersonasAsync()
         {
-            return await _unitOfWork.ApPersona.GetAllAsync();
+            return await _unitOfWork.ApPersona.GetAllPersonasAsync();
         }
         public async Task AddPersonaAsync(ApPersona Persona)
         {

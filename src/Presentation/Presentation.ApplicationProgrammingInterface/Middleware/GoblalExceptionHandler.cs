@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Presentation.ApplicationProgrammingInterface.Middleware
+namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Middleware
 {
     public class GoblalExceptionHandler : IExceptionHandler
     {

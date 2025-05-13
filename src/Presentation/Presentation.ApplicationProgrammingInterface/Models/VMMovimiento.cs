@@ -1,6 +1,6 @@
 ﻿using Domain.AppProgrammingInt.Models;
 
-namespace Presentation.ApplicationProgrammingInterface.Models
+namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Models
 {
     public class VMMovimiento
     {

@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.AppProgrammingInt", "src\Application\Application.AppProgrammingInt\Application.AppProgrammingInt.csproj", "{32E67187-9469-4CA1-CE6A-6897A271B550}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.ApplicationProgrammingInterface", "src\Presentation\Presentation.ApplicationProgrammingInterface\Presentation.ApplicationProgrammingInterface.csproj", "{F51435EC-54AE-4E27-B8BC-EACED80453BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.ApplicationProgrammingInterface.PersonaCliente", "src\Presentation\Presentation.ApplicationProgrammingInterface\Presentation.ApplicationProgrammingInterface.PersonaCliente.csproj", "{F51435EC-54AE-4E27-B8BC-EACED80453BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.AppProgrammingInt.IOC", "src\Infrastructure\Infrastructure.AppProgrammingInt.IOC\Infrastructure.AppProgrammingInt.IOC.csproj", "{553E8D4C-9848-4056-84DE-A827382073C3}"
 EndProject
