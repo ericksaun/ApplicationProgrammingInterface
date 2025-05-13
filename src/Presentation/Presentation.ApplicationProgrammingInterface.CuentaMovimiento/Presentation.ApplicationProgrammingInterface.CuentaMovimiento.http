@@ -1,0 +1,6 @@
+@Presentation.ApplicationProgrammingInterface.CuentaMovimiento_HostAddress = http://localhost:5028
+
+GET {{Presentation.ApplicationProgrammingInterface.CuentaMovimiento_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

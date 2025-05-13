@@ -38,11 +38,10 @@ namespace Application.AppProgrammingInt.Services
         public async Task DeletePersonaAsync(int id)
         {
             var Persona = await GetPersonaByIdAsync(id);
-            if (Persona != null)
-            {
+            
                 _unitOfWork.ApPersona.Remove(Persona);
                 await _unitOfWork.SaveChangesAsync();
-            }
+            
         }
         public async Task<IEnumerable<ApPersona>> GetPersonasByCriteriaAsync(Expression<Func<ApPersona, bool>> criteria)
         {

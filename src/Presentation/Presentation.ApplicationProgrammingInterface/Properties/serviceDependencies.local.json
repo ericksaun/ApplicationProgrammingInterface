@@ -6,6 +6,10 @@
       "type": "appInsights.azure",
       "connectionId": "APPLICATIONINSIGHTS_CONNECTION_STRING",
       "dynamicId": null
+    },
+    "identityapp1": {
+      "connectionInfo": "Registro de la aplicación: IDChallengeErickSalinas, Inquilino: Directorio predeterminado (ericksaunoutlook.onmicrosoft.com - Microsoft Entra ID)",
+      "type": "identityapp.default"
     }
   }
 }

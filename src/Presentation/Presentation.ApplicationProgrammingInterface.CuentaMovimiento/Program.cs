@@ -30,9 +30,9 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "API PersonaUsuario de Challenge NTTDATA",
+        Title = "API CuentaMovimiento de Challenge NTTDATA",
         Version = "v1",
-        Description = "Una API PersonaUsuario Challenge NTTDATA.",
+        Description = "Una API CuentaMovimiento Challenge NTTDATA.",
         Contact = new OpenApiContact
         {
             Name = "Erick Salinas N.",
@@ -64,7 +64,7 @@ builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsigh
 var app = builder.Build();
 var appsettings = app.Services.GetRequiredService<IOptionsMonitor<Appsettings>>();
 var allowOrigins = appsettings.CurrentValue.Configurations.Security.CorsAlows
-    .Split([ ',', ';' ], StringSplitOptions.RemoveEmptyEntries);
+    .Split([',', ';'], StringSplitOptions.RemoveEmptyEntries);
 
 // Configurar el pipeline HTTP.
 if (app.Environment.IsDevelopment())
@@ -80,7 +80,7 @@ app.Use(async (context, next) =>
         return;
     }
     await next();
-    
+
 });
 
 app.UseHttpsRedirection();

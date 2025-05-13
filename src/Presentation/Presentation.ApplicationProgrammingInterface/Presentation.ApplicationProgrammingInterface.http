@@ -1,6 +1,34 @@
-@Presentation.ApplicationProgrammingInterface_HostAddress = http://localhost:5053
+@Presentation.ApplicationProgrammingInterface_HostAddress = http://localhost:5055
 
-GET {{Presentation.ApplicationProgrammingInterface_HostAddress}}/weatherforecast/
+
+### Personas
+GET {{Presentation.ApplicationProgrammingInterface_HostAddress}}/api/Personas/GetAllPersonas
 Accept: application/json
 
 ###
+GET {{Presentation.ApplicationProgrammingInterface_HostAddress}}/api/Personas/GetPersonaById/1
+Accept: application/json
+
+###
+POST {{Presentation.ApplicationProgrammingInterface_HostAddress}}/api/Personas/AddPersona
+Content-Type: application/json
+
+{
+  "nombre": "Juan",
+  "apellido": "Pérez"
+}
+
+###
+PUT {{Presentation.ApplicationProgrammingInterface_HostAddress}}/api/Personas/UpdatePersona/1
+Content-Type: application/json
+
+{
+  "nombre": "Juan Actualizado"
+}
+
+###
+DELETE {{Presentation.ApplicationProgrammingInterface_HostAddress}}/api/Personas/DeletePersona/1
+Accept: application/json
+
+###
+
