@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.AppProgrammi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.AppProgrammingInt.Agent.PersonaCliente", "Infrastructure\Infrastructure.AppProgrammingInt.Agent.PersonaCliente\Infrastructure.AppProgrammingInt.Agent.PersonaCliente.csproj", "{E4B486D8-5514-4D98-B794-F5ECC289125B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6BEBCB15-9485-4210-A8B3-98AD066B26BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.ApplicationProgrammingInterface", "test\test.ApplicationProgrammingInterface\test.ApplicationProgrammingInterface.csproj", "{AA74F08A-F481-4883-AB51-8257D83E4294}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,10 @@ Global
 		{E4B486D8-5514-4D98-B794-F5ECC289125B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4B486D8-5514-4D98-B794-F5ECC289125B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4B486D8-5514-4D98-B794-F5ECC289125B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA74F08A-F481-4883-AB51-8257D83E4294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA74F08A-F481-4883-AB51-8257D83E4294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA74F08A-F481-4883-AB51-8257D83E4294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA74F08A-F481-4883-AB51-8257D83E4294}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +113,7 @@ Global
 		{37514F51-1C4F-4F2D-917C-25D4B2F63C51} = {10CA890C-01DE-40B9-B945-520CE32EE59C}
 		{56B3A237-49BE-4AA1-826F-B97D0C25EB0D} = {10CA890C-01DE-40B9-B945-520CE32EE59C}
 		{E4B486D8-5514-4D98-B794-F5ECC289125B} = {10CA890C-01DE-40B9-B945-520CE32EE59C}
+		{AA74F08A-F481-4883-AB51-8257D83E4294} = {6BEBCB15-9485-4210-A8B3-98AD066B26BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDDA7753-8CC6-4ED0-9A31-0C9BF66DF5E6}
