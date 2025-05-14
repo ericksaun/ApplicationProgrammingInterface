@@ -81,5 +81,15 @@ namespace Application.AppProgrammingInt.Services
             ApPersona persona = await _personaClienteAgents.GetPersonaClientebyNameAsync(nombre);
             return persona;
         }
+
+       public async Task<IEnumerable<ApCuenta>> GetCuentasIdClienteComplete(int id)
+        {
+            var cuentas = await _unitOfWork.ApCuenta.GetCuentasIdClienteComplete(id);
+            if (cuentas == null || !cuentas.Any())
+            {
+                throw new KeyNotFoundException($"No se encontraron cuentas para el cliente con ID {id}.");
+            }
+            return cuentas;
+        }
     }
 }

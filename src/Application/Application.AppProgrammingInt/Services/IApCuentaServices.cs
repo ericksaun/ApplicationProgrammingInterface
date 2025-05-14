@@ -12,6 +12,7 @@ namespace Application.AppProgrammingInt.Services
         Task DeleteCuentaAsync(int id);
         Task<IEnumerable<ApCuenta>> GetCuentasByCriteriaAsync(Expression<Func<ApCuenta, bool>> criteria);
         Task<ApPersona> GetPersonaClientebyNameAsync(string nombre);
+        Task<IEnumerable<ApCuenta>> GetCuentasIdClienteComplete(int id);
 
     }
 }

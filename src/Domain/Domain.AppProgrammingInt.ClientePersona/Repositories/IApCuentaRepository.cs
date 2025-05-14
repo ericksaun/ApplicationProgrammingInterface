@@ -9,5 +9,6 @@ namespace Domain.AppProgrammingInt.Repositories
 {
     public interface IApCuentaRepository : IGenericAppProgrammingIntRepository<ApCuenta>
     {
+        Task<IEnumerable<ApCuenta>> GetCuentasIdClienteComplete(int id);
     }
 }

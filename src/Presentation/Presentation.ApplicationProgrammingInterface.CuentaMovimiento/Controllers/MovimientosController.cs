@@ -217,5 +217,8 @@ namespace Presentation.ApplicationProgrammingInterface.CuentaMovimiento.Controll
                 return StatusCode(500, "Error interno al eliminar el movimiento.");
             }
         }
+
+
+        
     }
 }
