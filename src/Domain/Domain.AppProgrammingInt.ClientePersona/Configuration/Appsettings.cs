@@ -1,6 +1,7 @@
 ﻿
 public class Appsettings
 {
+    public string ApiName { get; set; }
     public Connectionstring ConnectionString { get; set; }
     public Configurations Configurations { get; set; }
     public Logging Logging { get; set; }
@@ -14,6 +15,8 @@ public class Connectionstring
 
 public class Configurations
 {
+    public string AgentoConnectCuentaMovimiento { get; set; }
+    public string AgentoConnectPersonaCuenta { get; set; }
     public Security Security { get; set; }
 }
 
@@ -55,4 +58,19 @@ public class Loglevel
 {
     public string Default { get; set; }
     public string MicrosoftAspNetCore { get; set; }
+}
+
+public class Applicationinsights
+{
+    public string ConnectionString { get; set; }
+}
+
+public class Azuread
+{
+    public string Instance { get; set; }
+    public string Domain { get; set; }
+    public string TenantId { get; set; }
+    public string ClientId { get; set; }
+    public string CallbackPath { get; set; }
+    public string Scopes { get; set; }
 }

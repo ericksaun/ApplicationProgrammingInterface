@@ -8,6 +8,7 @@ using Presentation.ApplicationProgrammingInterface.PersonaCliente.Middleware;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
+using Infrastructure.AppProgrammingInt.Refit.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.Configure<Appsettings>(condiguration);
 
 ConfigurationIOC.AddDependency(builder.Services);
 ConfigureDataBase.AddConfigureDataBase(builder.Services);
+RefitConfig.Configure(builder.Services);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
@@ -42,7 +44,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
 
 builder.Services.AddMemoryCache();

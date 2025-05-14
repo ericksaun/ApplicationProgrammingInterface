@@ -11,6 +11,7 @@ namespace Application.AppProgrammingInt.Services
         Task UpdateCuentaAsync(ApCuenta cuenta);
         Task DeleteCuentaAsync(int id);
         Task<IEnumerable<ApCuenta>> GetCuentasByCriteriaAsync(Expression<Func<ApCuenta, bool>> criteria);
+        Task<ApPersona> GetPersonaClientebyNameAsync(string nombre);
 
     }
 }

@@ -8,6 +8,7 @@ using Presentation.ApplicationProgrammingInterface.PersonaCliente.Middleware;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
+using Infrastructure.AppProgrammingInt.Refit.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,9 +16,10 @@ var condiguration = builder.Configuration.GetSection(nameof(Appsettings));
 
 builder.Services.Configure<Appsettings>(condiguration);
 // Agregar servicios al contenedor.
-
+RefitConfig.Configure(builder.Services);
 ConfigurationIOC.AddDependency(builder.Services);
 ConfigureDataBase.AddConfigureDataBase(builder.Services);
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
@@ -40,10 +42,14 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+
+
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
+
 
 builder.Services.AddMemoryCache();
 builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("Appsettings:Configurations:Security:IpRateLimiting"));

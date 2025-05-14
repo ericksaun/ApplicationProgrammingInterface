@@ -6,16 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.AppProgrammingInt.Models;
 using Domain.AppProgrammingInt.UnitOfWork;
+using Infrastructure.AppProgrammingInt.Agent.PersonaCliente;
 
 namespace Application.AppProgrammingInt.Services
 {
     public class ApClienteServices : IApClienteServices
     {
         private readonly IAppProgrammingIntUnitOfWork _unitOfWork;
-
+       
         public ApClienteServices(IAppProgrammingIntUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            
         }
 
         public async Task<ApCliente> GetClienteByIdAsync(int id)
@@ -71,5 +73,7 @@ namespace Application.AppProgrammingInt.Services
 
             return await _unitOfWork.ApCliente.FindAsync(criteria);
         }
+
+
     }
 }

@@ -6,16 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.AppProgrammingInt.Models;
 using Domain.AppProgrammingInt.UnitOfWork;
+using Infrastructure.AppProgrammingInt.Agent.PersonaCliente;
 
 namespace Application.AppProgrammingInt.Services
 {
     public class ApCuentaServices : IApCuentaServices
     {
         private readonly IAppProgrammingIntUnitOfWork _unitOfWork;
+        private readonly IPersonaClienteAgents _personaClienteAgents;
 
-        public ApCuentaServices(IAppProgrammingIntUnitOfWork unitOfWork)
+        public ApCuentaServices(IAppProgrammingIntUnitOfWork unitOfWork, IPersonaClienteAgents personaClienteAgents)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            _personaClienteAgents = personaClienteAgents ?? throw new ArgumentNullException(nameof(personaClienteAgents));
         }
 
         public async Task<ApCuenta> GetCuentaByIdAsync(int id)
@@ -70,6 +73,13 @@ namespace Application.AppProgrammingInt.Services
             }
 
             return await _unitOfWork.ApCuenta.FindAsync(criteria);
+        }
+
+
+        public async Task<ApPersona> GetPersonaClientebyNameAsync(string nombre)
+        {
+            ApPersona persona = await _personaClienteAgents.GetPersonaClientebyNameAsync(nombre);
+            return persona;
         }
     }
 }

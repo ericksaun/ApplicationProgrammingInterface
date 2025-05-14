@@ -21,6 +21,10 @@ namespace Infrastructure.AppProgrammingInt.DataBase.AppProgrammingInt.Repositori
             return await _context.ApPersonas.Include(x=> x.ApCliente).AsNoTracking().ToListAsync();
               
         }
+        public async Task<ApPersona?> GetPersonaCompleteByNombre(string Nombre)
+        {
+            return await _context.ApPersonas.Where(a=> a.PsNombre ==Nombre).Include(x=> x.ApCliente).AsNoTracking().FirstOrDefaultAsync();
+        }
     }
     
 }

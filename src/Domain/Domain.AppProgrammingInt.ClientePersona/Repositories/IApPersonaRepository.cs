@@ -10,5 +10,6 @@ namespace Domain.AppProgrammingInt.Repositories
     public interface IApPersonaRepository : IGenericAppProgrammingIntRepository<ApPersona>
     {
         Task<IEnumerable<ApPersona>> GetAllPersonasAsync();
+        Task<ApPersona?> GetPersonaCompleteByNombre(string Nombre);
     }
 }

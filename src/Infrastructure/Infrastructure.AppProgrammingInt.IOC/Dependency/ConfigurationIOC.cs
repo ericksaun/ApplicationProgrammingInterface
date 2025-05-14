@@ -10,6 +10,7 @@ using Infrastructure.AppProgrammingInt.DataBase.AppProgrammingInt.Repositories;
 using Domain.AppProgrammingInt.UnitOfWork;
 using Infrastructure.AppProgrammingInt.DataBase.AppProgrammingInt.UnitOfWork;
 using AspNetCoreRateLimit;
+using Infrastructure.AppProgrammingInt.Agent.PersonaCliente;
 
 namespace Infrastructure.AppProgrammingInt.IOC.Dependency
 {
@@ -33,7 +34,7 @@ namespace Infrastructure.AppProgrammingInt.IOC.Dependency
             services.AddScoped<IApPersonaRepository, ApPersonaRepository>();
             services.AddScoped<IApMovimientoRepository, ApMovimientoRepository>();
             services.AddScoped<IApClienteRepository, ApClienteRepository>();
-            services.AddScoped(typeof(IGenericAppProgrammingIntRepository<>),typeof( GenericAppProgrammingIntRepository<>));
+            services.AddScoped(typeof(IGenericAppProgrammingIntRepository<>), typeof(GenericAppProgrammingIntRepository<>));
             #endregion Repsositories
             #region UnitOfWork
             services.AddScoped<IAppProgrammingIntUnitOfWork, AppProgrammingIntUnitOfWork>();
@@ -41,6 +42,10 @@ namespace Infrastructure.AppProgrammingInt.IOC.Dependency
             #region Security
             services.AddTransient<IRateLimitConfiguration, RateLimitConfiguration>();
             #endregion Security
+            #region Agents
+            services.AddScoped<IPersonaClienteAgents, PersonaClienteAgents>();
+            #endregion
+           
 
         }
 

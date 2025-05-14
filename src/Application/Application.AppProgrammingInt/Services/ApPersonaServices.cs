@@ -47,6 +47,10 @@ namespace Application.AppProgrammingInt.Services
         {
             return await _unitOfWork.ApPersona.FindAsync(criteria);
         }
+        public async Task<ApPersona?> GetPersonaCompleteByNombre(string Nombre)
+        {
+            return await _unitOfWork.ApPersona.GetPersonaCompleteByNombre(Nombre);
+        }
 
     }
 }

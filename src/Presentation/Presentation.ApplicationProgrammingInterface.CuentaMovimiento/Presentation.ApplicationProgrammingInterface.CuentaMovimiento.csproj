@@ -26,5 +26,8 @@
 		<ProjectReference Include="..\..\Infrastructure\Infrastructure.AppProgrammingInt.DataBase.Configuration\Infrastructure.AppProgrammingInt.DataBase.Configuration.csproj" />
 		<ProjectReference Include="..\..\Infrastructure\Infrastructure.AppProgrammingInt.IOC\Infrastructure.AppProgrammingInt.IOC.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Models\" />
+	</ItemGroup>
 
 </Project>

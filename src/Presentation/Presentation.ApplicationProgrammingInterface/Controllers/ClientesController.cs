@@ -2,18 +2,17 @@
 using Domain.AppProgrammingInt.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Presentation.ApplicationProgrammingInterface.PersonaCliente.Models;
 
 namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class PersonasController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         private readonly IApPersonasServices _apPersonaservices;
-        private readonly ILogger<PersonasController> _logger;
+        private readonly ILogger<ClienteController> _logger;
 
-        public PersonasController(IApPersonasServices apPersonaservices, ILogger<PersonasController> logger)
+        public ClienteController(IApPersonasServices apPersonaservices, ILogger<ClienteController> logger)
         {
             _apPersonaservices = apPersonaservices ?? throw new ArgumentNullException(nameof(apPersonaservices));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -28,8 +27,8 @@ namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controller
             return Ok(personas);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetPersonaById(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetPersonaById([FromQuery] int id)
         {
             _logger.LogInformation("Iniciando la búsqueda de la persona con ID {Id}.", id);
             try
@@ -48,6 +47,29 @@ namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controller
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al buscar la persona con ID {Id}.", id);
+                throw;
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetPersonaByIdName([FromQuery] string Nombre)
+        {
+            _logger.LogInformation("Iniciando la búsqueda de la persona con Nombre {Nombre}.", Nombre);
+            try
+            {
+                var persona = await _apPersonaservices.GetPersonaCompleteByNombre(Nombre);
+
+                if (persona == null)
+                {
+                    _logger.LogWarning("Persona con Nombre {Nombre} no encontrada.", Nombre);
+                    return NotFound($"Persona con Nombre {Nombre} no encontrada.");
+                }
+
+                _logger.LogInformation("Persona con Nombre {Nombre} encontrada.", Nombre);
+                return Ok(persona);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al buscar la persona con Nombre {Nombre}.", Nombre);
                 throw;
             }
         }
@@ -87,8 +109,8 @@ namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controller
             }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePersona(int id, [FromBody] VMApPersona modificacion)
+        [HttpPut]
+        public async Task<IActionResult> UpdatePersona([FromQuery] int id, [FromBody] VMApPersona modificacion)
         {
             if (modificacion == null)
             {
@@ -125,8 +147,8 @@ namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Controller
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePersona(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeletePersona([FromQuery] int id)
         {
             _logger.LogInformation("Iniciando la eliminación de la persona con ID {Id}.", id);
             try

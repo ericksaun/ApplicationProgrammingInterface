@@ -1,11 +1,8 @@
-﻿using Domain.AppProgrammingInt.Models;
-
-namespace Presentation.ApplicationProgrammingInterface.PersonaCliente.Models
+﻿namespace Domain.AppProgrammingInt.Models
 {
     public class VMApPersona
     {
-        public int? PsIdPersona { get; set; }
-
+       
         public string? PsNombre { get; set; } = null!;
 
         public string? PsGenero { get; set; } = null!;
